@@ -37,3 +37,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Project Specific ###
+# 用户上传的照片文件
+src/main/webapp/uploads/*
+!src/main/webapp/uploads/.gitkeep
