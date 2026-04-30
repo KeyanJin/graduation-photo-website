@@ -124,7 +124,8 @@ public class PhotoUploadServlet extends HttpServlet {
         String extension = lowerFileName.substring(lowerFileName.lastIndexOf('.'));
         String uniqueFileName = UUID.randomUUID().toString() + extension;
 
-        String uploadDir = getServletContext().getRealPath("/uploads");
+        String uploadDir = System.getProperty("user.home")
+                + File.separator + "graduation-photo-uploads";
         File uploadDirFile = new File(uploadDir);
         if (!uploadDirFile.exists()) {
             uploadDirFile.mkdirs();

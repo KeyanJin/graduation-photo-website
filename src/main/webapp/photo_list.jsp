@@ -33,12 +33,18 @@
     <% if (photos != null && !photos.isEmpty()) { %>
     <div class="photo-grid">
       <% for (Photo photo : photos) { %>
-      <a href="<%= ctx %>/photo/detail?id=<%= photo.getId() %>" style="text-decoration:none;color:inherit;">
         <div class="photo-card">
-          <div class="photo-img-wrapper">
-            <img src="<%= ctx %>/<%= photo.getImagePath() %>" alt="<%= photo.getTitle() %>"
-                 onerror="this.src='https://via.placeholder.com/400x300/7EC8E3/FFFFFF?text=毕业照'">
-          </div>
+          <a href="<%= ctx %>/photo/detail?id=<%= photo.getId() %>" style="text-decoration:none;color:inherit;display:block;">
+            <div class="photo-img-wrapper">
+              <img src="<%= ctx %>/<%= photo.getImagePath() %>" alt="<%= photo.getTitle() %>"
+                   onerror="this.src='https://via.placeholder.com/400x300/7EC8E3/FFFFFF?text=毕业照'">
+            </div>
+          </a>
+          <form action="<%= ctx %>/photo/delete" method="post" class="photo-delete-form"
+                onsubmit="return confirm('确定要删除这张毕业照吗？此操作不可恢复。');">
+            <input type="hidden" name="id" value="<%= photo.getId() %>">
+            <button type="submit" class="btn-delete" title="删除">&#10005;</button>
+          </form>
           <div class="photo-info">
             <div class="photo-title"><%= photo.getTitle() %></div>
             <div class="photo-meta">
@@ -47,7 +53,6 @@
             </div>
           </div>
         </div>
-      </a>
       <% } %>
     </div>
     <% } else { %>

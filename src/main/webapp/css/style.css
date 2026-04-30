@@ -298,6 +298,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-card);
   overflow: hidden;
   transition: all var(--transition-base);
+  position: relative;
 }
 
 .photo-card:hover {
@@ -368,6 +369,41 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
   font-weight: 500;
+}
+
+.photo-card .photo-delete-form {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.photo-card:hover .photo-delete-form {
+  opacity: 1;
+}
+
+.photo-card .btn-delete {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-danger);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(255, 107, 107, 0.4);
+  transition: all var(--transition-fast);
+}
+
+.photo-card .btn-delete:hover {
+  background: #e05555;
+  transform: scale(1.1);
 }
 
 /* --- Forms --- */
