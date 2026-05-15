@@ -13,28 +13,28 @@
   --color-primary-active: #11a89b;
   --color-primary-bg:     #e6f9f6;
 
-  /* 文字（温暖棕色系） */
-  --color-text:           #794f27;
-  --color-text-light:     #725d42;
-  --color-text-muted:     #9f927d;
-  --color-text-secondary: #8a7b66;
-  --color-text-disabled:  #c4b89e;
+  /* 文字（偏冷灰棕色系） */
+  --color-text:           #5c4a32;
+  --color-text-light:     #5a5040;
+  --color-text-muted:     #908b80;
+  --color-text-secondary: #7d7568;
+  --color-text-disabled:  #b8b3a8;
 
-  /* 背景（奶油米白） */
-  --color-bg:             #f8f8f0;
-  --color-bg-alt:         rgb(247, 243, 223);
-  --color-bg-secondary:   #f0e8d8;
-  --color-bg-disabled:    #f0ece2;
+  /* 背景（偏冷米白） */
+  --color-bg:             #f5f5f2;
+  --color-bg-alt:         rgb(245, 243, 235);
+  --color-bg-secondary:   #ebe8e0;
+  --color-bg-disabled:    #eae8e2;
   --color-card:           #ffffff;
 
   /* 边框 */
-  --color-border:         #c4b89e;
-  --color-border-light:   #e8e2d6;
-  --color-border-hover:   #a89878;
+  --color-border:         #b8b3a8;
+  --color-border-light:   #e2e0d8;
+  --color-border-hover:   #9a9488;
 
   /* 3D 阴影色 */
-  --shadow-btn:           #bdaea0;
-  --shadow-input:         #d4c9b4;
+  --shadow-btn:           #b0aba0;
+  --shadow-input:         #ccc8bc;
 
   /* 状态色 */
   --color-danger:         #e05a5a;
@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Navbar --- */
 .navbar-campus {
-  background: rgba(248, 248, 240, 0.95) !important;
+  background: rgba(245, 245, 242, 0.95) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--color-border-light);
@@ -416,57 +416,77 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 }
 
-/* --- Photo Card --- */
+/* --- Photo Card (Polaroid Frame) --- */
 .photo-card {
-  background: var(--color-card);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 10px rgba(107, 92, 67, 0.42);
+  background: #fff;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.06),
+    0 2px 0 0 var(--shadow-btn),
+    0 4px 10px rgba(107, 92, 67, 0.42);
   overflow: hidden;
   transition: var(--transition-base);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .photo-card:hover {
-  box-shadow: 0 8px 24px rgba(114, 93, 66, 0.15);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.06),
+    0 3px 0 0 var(--shadow-btn),
+    0 8px 24px rgba(114, 93, 66, 0.15);
   transform: translateY(-4px);
 }
 
+/* Polaroid frame inner border (tape effect optional) */
 .photo-card .photo-img-wrapper {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
   background: var(--color-bg-alt);
+  margin: 12px 12px 0;
+  border-radius: 2px;
+  /* No fixed aspect-ratio — photo shows at natural ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inner frame shadow to simulate photo paper edge */
+.photo-card .photo-img-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 2px;
 }
 
 .photo-card .photo-img-wrapper img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  display: block;
+  background: var(--color-bg-alt);
   transition: var(--transition-slow);
 }
 
+/* Subtle zoom on hover (only slight, to not distort contain) */
 .photo-card:hover .photo-img-wrapper img {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
+/* Remove old overlay — replaced by frame */
 .photo-card .photo-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
-  padding: var(--spacing-md);
-  opacity: 0;
-  transition: opacity var(--transition-base);
+  display: none;
 }
 
-.photo-card:hover .photo-overlay {
-  opacity: 1;
-}
-
+/* Bottom info area like Polaroid caption */
 .photo-card .photo-info {
-  padding: var(--spacing-md);
+  padding: 14px 16px 16px;
+  background: #fff;
 }
 
 .photo-card .photo-title {
@@ -498,10 +518,11 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--color-border);
 }
 
+/* Delete button — float over the frame area */
 .photo-card .photo-delete-form {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 16px;
+  right: 16px;
   z-index: 10;
   opacity: 0;
   transition: opacity var(--transition-base);
@@ -558,7 +579,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   letter-spacing: 0.01em;
   transition: var(--transition-fast);
-  background: rgb(247, 243, 223);
+  background: rgb(245, 243, 235);
   color: var(--color-text-light);
   box-shadow: 0 3px 0 0 var(--shadow-input);
 }
@@ -792,6 +813,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-lg);
+  align-items: start; /* 顶部对齐，不强制拉伸同高 */
 }
 
 /* --- Empty State --- */
