@@ -19,7 +19,7 @@
   <div class="auth-card">
     <div class="card card-campus">
       <div class="card-body">
-        <h3>&#128274; 用户登录</h3>
+        <h3>用户登录</h3>
 
         <% if (error != null && !error.isEmpty()) { %>
         <div class="alert alert-campus-danger alert-campus" role="alert">

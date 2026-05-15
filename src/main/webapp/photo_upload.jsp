@@ -21,8 +21,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%= ctx %>/css/style.css" rel="stylesheet">
   <style>
-    #mapContainer { width: 100%; height: 400px; border-radius: var(--radius-xl); overflow: hidden; }
-    .map-info { background: var(--color-primary-light); padding: 8px 12px; border-radius: var(--radius-md); margin-top: 8px; font-size: 0.875rem; color: var(--color-primary-dark); }
+    #mapContainer { width: 100%; height: 400px; border-radius: 20px; overflow: hidden; border: 2px solid #c4b89e; }
+    .map-info { background: rgb(247, 243, 223); padding: 8px 12px; border-radius: 12px; margin-top: 8px; font-size: 0.875rem; color: #725d42; border: 1px solid #c4b89e; }
   </style>
 </head>
 <body>
@@ -36,7 +36,7 @@
           <li class="breadcrumb-item active">上传照片</li>
         </ol>
       </nav>
-      <h2>&#128247; 上传毕业照</h2>
+      <h2>上传毕业照</h2>
     </div>
   </div>
 

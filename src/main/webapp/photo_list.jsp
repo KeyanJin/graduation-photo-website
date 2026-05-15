@@ -19,7 +19,7 @@
 
   <div class="page-header-campus">
     <div class="container">
-      <h2>&#128247; 我的照片</h2>
+      <h2>我的照片</h2>
       <p>管理你的毕业照</p>
     </div>
   </div>
@@ -27,7 +27,7 @@
   <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <span class="text-muted-campus">共 <%= photos != null ? photos.size() : 0 %> 张照片</span>
-      <a href="<%= ctx %>/photo/upload" class="btn btn-campus-primary">&#43; 上传照片</a>
+      <a href="<%= ctx %>/photo/upload" class="btn btn-campus-primary">+ 上传照片</a>
     </div>
 
     <% if (photos != null && !photos.isEmpty()) { %>
@@ -43,7 +43,7 @@
           <form action="<%= ctx %>/photo/delete" method="post" class="photo-delete-form"
                 onsubmit="return confirm('确定要删除这张毕业照吗？此操作不可恢复。');">
             <input type="hidden" name="id" value="<%= photo.getId() %>">
-            <button type="submit" class="btn-delete" title="删除">&#10005;</button>
+            <button type="submit" class="btn-delete" title="删除">×</button>
           </form>
           <div class="photo-info">
             <div class="photo-title"><%= photo.getTitle() %></div>

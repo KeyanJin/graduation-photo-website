@@ -12,7 +12,7 @@
   <div class="container">
     <a class="navbar-brand" href="<%= navCtx %>/index.jsp">
       <span class="brand-icon">&#127891;</span>
-      青春毕业照
+      毕业照
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCampus" aria-controls="navbarCampus" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,11 +36,11 @@
           <span><%= loginUser.getUsername() %></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="<%= navCtx %>/profile.jsp">&#128100; 个人中心</a></li>
-          <li><a class="dropdown-item" href="<%= navCtx %>/education?action=list">&#127891; 教育履历</a></li>
-          <li><a class="dropdown-item" href="<%= navCtx %>/photo/list">&#128247; 我的照片</a></li>
+          <li><a class="dropdown-item" href="<%= navCtx %>/profile.jsp">个人中心</a></li>
+          <li><a class="dropdown-item" href="<%= navCtx %>/education?action=list">教育履历</a></li>
+          <li><a class="dropdown-item" href="<%= navCtx %>/photo/list">我的照片</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-danger" href="<%= navCtx %>/logout">&#128682; 退出登录</a></li>
+          <li><a class="dropdown-item text-danger" href="<%= navCtx %>/logout">退出登录</a></li>
         </ul>
       </div>
       <% } else { %>

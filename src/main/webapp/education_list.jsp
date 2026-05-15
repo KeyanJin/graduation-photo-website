@@ -19,7 +19,7 @@
 
   <div class="page-header-campus">
     <div class="container">
-      <h2>&#127891; 教育履历</h2>
+      <h2>教育履历</h2>
       <p>管理你的求学经历</p>
     </div>
   </div>
@@ -27,7 +27,7 @@
   <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <span class="text-muted-campus">共 <%= educationList != null ? educationList.size() : 0 %> 条记录</span>
-      <a href="<%= ctx %>/education?action=add" class="btn btn-campus-primary">&#43; 添加履历</a>
+      <a href="<%= ctx %>/education?action=add" class="btn btn-campus-primary">+ 添加履历</a>
     </div>
 
     <% if (educationList != null && !educationList.isEmpty()) { %>

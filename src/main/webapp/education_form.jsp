@@ -27,7 +27,7 @@
           <li class="breadcrumb-item active"><%= isEdit ? "编辑" : "新增" %></li>
         </ol>
       </nav>
-      <h2><%= isEdit ? "&#9998; 编辑" : "&#43; 新增" %>教育履历</h2>
+      <h2><%= isEdit ? "编辑" : "新增" %>教育履历</h2>
     </div>
   </div>
 

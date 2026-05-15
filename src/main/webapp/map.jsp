@@ -14,15 +14,15 @@
     #map-container { width: 100%; height: calc(100vh - 56px); }
     .photo-info-window { padding: 8px; max-width: 320px; }
     .photo-info-window .photo-thumb { width: 100%; max-height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
-    .photo-info-window .photo-title { font-size: 15px; font-weight: 600; color: #333; margin-bottom: 6px; }
-    .photo-info-window .photo-meta { font-size: 12px; color: #666; line-height: 1.8; }
-    .photo-info-window .photo-meta span { display: inline-block; background: #E0EEF5; padding: 1px 8px; border-radius: 10px; margin: 2px 2px 2px 0; }
-    .photo-info-window .photo-link { display: inline-block; margin-top: 8px; color: #5BA8C8; font-size: 13px; text-decoration: none; font-weight: 500; }
+    .photo-info-window .photo-title { font-size: 15px; font-weight: 600; color: #725d42; margin-bottom: 6px; }
+    .photo-info-window .photo-meta { font-size: 12px; color: #8a7b66; line-height: 1.8; }
+    .photo-info-window .photo-meta span { display: inline-block; background: rgb(247, 243, 223); padding: 1px 8px; border-radius: 8px; margin: 2px 2px 2px 0; }
+    .photo-info-window .photo-link { display: inline-block; margin-top: 8px; color: #19c8b9; font-size: 13px; text-decoration: none; font-weight: 600; }
     .photo-info-window .photo-link:hover { text-decoration: underline; }
     .loading-overlay {
       position: absolute; top: 56px; left: 0; right: 0; bottom: 0; z-index: 2000;
-      background: rgba(244, 251, 255, 0.9); display: flex; align-items: center; justify-content: center;
-      font-size: 16px; color: #7EC8E3;
+      background: rgba(248, 248, 240, 0.95); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: #19c8b9; font-weight: 600;
     }
     .loading-overlay.hidden { display: none; }
   </style>

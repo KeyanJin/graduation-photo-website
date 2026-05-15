@@ -38,7 +38,7 @@
         </div>
         <div class="col-lg-6 d-none d-lg-block text-center">
           <div class="animate-fade-in-up animate-delay-3" style="font-size: 8rem; line-height: 1.2;">
-            &#127891;&#127878;&#128247;
+            &#127891;
           </div>
         </div>
       </div>

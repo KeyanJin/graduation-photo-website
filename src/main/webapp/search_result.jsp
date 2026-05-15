@@ -29,7 +29,7 @@
           <li class="breadcrumb-item active">搜索结果</li>
         </ol>
       </nav>
-      <h2>&#128269; 搜索毕业照</h2>
+      <h2>搜索毕业照</h2>
     </div>
   </div>
 

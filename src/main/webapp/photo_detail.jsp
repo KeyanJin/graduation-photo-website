@@ -13,7 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%= ctx %>/css/style.css" rel="stylesheet">
   <style>
-    #mapContainer { width: 100%; height: 300px; border-radius: var(--radius-xl); overflow: hidden; }
+    #mapContainer { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; border: 2px solid #c4b89e; }
   </style>
 </head>
 <body>

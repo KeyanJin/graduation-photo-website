@@ -16,7 +16,7 @@
 
   <div class="page-header-campus">
     <div class="container">
-      <h2>&#128269; 搜索毕业照</h2>
+      <h2>搜索毕业照</h2>
       <p>选择教育阶段，寻找珍贵的毕业回忆</p>
     </div>
   </div>

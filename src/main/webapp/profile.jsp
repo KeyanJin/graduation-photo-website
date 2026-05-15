@@ -29,7 +29,7 @@
 
   <div class="page-header-campus">
     <div class="container">
-      <h2>&#128100; 个人中心</h2>
+      <h2>个人中心</h2>
       <p>欢迎回来，<%= user.getUsername() %></p>
     </div>
   </div>
@@ -48,7 +48,7 @@
       <div class="col-md-4">
         <div class="card card-campus p-4">
           <div class="d-flex align-items-center gap-3 mb-3">
-            <span style="font-size:2rem;">&#127891;</span>
+            <span class="feature-icon feature-icon-primary" style="width:48px;height:48px;font-size:1.5rem;margin:0;">&#127891;</span>
             <div>
               <h5 class="mb-0">教育履历</h5>
               <small class="text-muted-campus">共 <%= eduCount %> 条记录</small>
@@ -60,7 +60,7 @@
       <div class="col-md-4">
         <div class="card card-campus p-4">
           <div class="d-flex align-items-center gap-3 mb-3">
-            <span style="font-size:2rem;">&#128247;</span>
+            <span class="feature-icon feature-icon-secondary" style="width:48px;height:48px;font-size:1.5rem;margin:0;">&#128247;</span>
             <div>
               <h5 class="mb-0">我的照片</h5>
               <small class="text-muted-campus">共 <%= photoCount %> 张照片</small>
@@ -74,7 +74,7 @@
     <div class="mt-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h5>最近照片</h5>
-        <a href="<%= ctx %>/photo/upload" class="btn btn-campus-accent btn-sm">&#43; 上传照片</a>
+        <a href="<%= ctx %>/photo/upload" class="btn btn-campus-accent btn-sm">+ 上传照片</a>
       </div>
       <% if (myPhotos != null && !myPhotos.isEmpty()) { %>
       <div class="photo-grid">
