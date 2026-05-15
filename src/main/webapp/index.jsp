@@ -32,14 +32,18 @@
             上传你的毕业照，与同窗好友一起重温那些年。
           </p>
           <div class="hero-actions animate-fade-in-up animate-delay-2">
-            <a href="<%= ctx %>/register" class="btn btn-campus-primary btn-lg">立即加入</a>
-            <a href="<%= ctx %>/search" class="btn btn-campus-outline btn-lg">探索照片</a>
+            <a href="<%= ctx %>/register" class="btn btn-campus-primary btn-lg">
+              <svg class="ai-icon ai-icon-md" aria-hidden="true"><use href="#ai-icon-user"/></svg> 立即加入
+            </a>
+            <a href="<%= ctx %>/search" class="btn btn-campus-outline btn-lg">
+              <svg class="ai-icon ai-icon-md" aria-hidden="true"><use href="#ai-icon-search"/></svg> 探索照片
+            </a>
           </div>
         </div>
         <div class="col-lg-6 d-none d-lg-block text-center">
-          <div class="animate-fade-in-up animate-delay-3" style="font-size: 8rem; line-height: 1.2;">
-            &#127891;
-          </div>
+          <svg class="ai-hero-illustration animate-fade-in-up animate-delay-3" viewBox="0 0 400 400" aria-hidden="true" style="max-height:320px;">
+            <use href="#ai-hero-graduation"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -52,28 +56,36 @@
       <div class="row g-4">
         <div class="col-md-6 col-lg-3">
           <div class="feature-card animate-on-scroll">
-            <div class="feature-icon feature-icon-primary">&#128247;</div>
+            <div class="ai-feature-icon ai-feature-icon-primary">
+              <svg class="ai-icon" aria-hidden="true"><use href="#ai-icon-camera"/></svg>
+            </div>
             <h5>上传毕业照</h5>
             <p>上传你的毕业照，关联教育履历，记录每一个重要时刻</p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="feature-card animate-on-scroll">
-            <div class="feature-icon feature-icon-secondary">&#128269;</div>
+            <div class="ai-feature-icon ai-feature-icon-secondary">
+              <svg class="ai-icon" aria-hidden="true"><use href="#ai-icon-search"/></svg>
+            </div>
             <h5>搜索同学</h5>
             <p>按学校、年级、班级搜索，找到你的同窗好友</p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="feature-card animate-on-scroll">
-            <div class="feature-icon feature-icon-accent">&#127758;</div>
+            <div class="ai-feature-icon ai-feature-icon-accent">
+              <svg class="ai-icon" aria-hidden="true"><use href="#ai-icon-map-pin"/></svg>
+            </div>
             <h5>地图标记</h5>
             <p>在地图上标记拍摄地点，发现身边的毕业照</p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="feature-card animate-on-scroll">
-            <div class="feature-icon feature-icon-primary">&#127891;</div>
+            <div class="ai-feature-icon ai-feature-icon-primary">
+              <svg class="ai-icon" aria-hidden="true"><use href="#ai-icon-education"/></svg>
+            </div>
             <h5>教育履历</h5>
             <p>记录你的求学经历，从幼儿园到大学一目了然</p>
           </div>

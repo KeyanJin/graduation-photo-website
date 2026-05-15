@@ -8,10 +8,13 @@
     isLoggedIn = true;
   }
 %>
+<%@ include file="/WEB-INF/jspf/icons.jsp" %>
 <nav class="navbar navbar-expand-lg navbar-campus sticky-top">
   <div class="container">
     <a class="navbar-brand" href="<%= navCtx %>/index.jsp">
-      <span class="brand-icon">&#127891;</span>
+      <span class="brand-icon">
+        <svg class="ai-icon ai-brand-icon" aria-hidden="true"><use href="#ai-icon-graduation-cap"/></svg>
+      </span>
       毕业照
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCampus" aria-controls="navbarCampus" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,11 +39,11 @@
           <span><%= loginUser.getUsername() %></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="<%= navCtx %>/profile.jsp">个人中心</a></li>
-          <li><a class="dropdown-item" href="<%= navCtx %>/education?action=list">教育履历</a></li>
-          <li><a class="dropdown-item" href="<%= navCtx %>/photo/list">我的照片</a></li>
+          <li><a class="dropdown-item d-flex align-items-center gap-2" href="<%= navCtx %>/profile.jsp"><svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-user"/></svg> 个人中心</a></li>
+          <li><a class="dropdown-item d-flex align-items-center gap-2" href="<%= navCtx %>/education?action=list"><svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-education"/></svg> 教育履历</a></li>
+          <li><a class="dropdown-item d-flex align-items-center gap-2" href="<%= navCtx %>/photo/list"><svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-camera"/></svg> 我的照片</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-danger" href="<%= navCtx %>/logout">退出登录</a></li>
+          <li><a class="dropdown-item text-danger d-flex align-items-center gap-2" href="<%= navCtx %>/logout"><svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-delete"/></svg> 退出登录</a></li>
         </ul>
       </div>
       <% } else { %>

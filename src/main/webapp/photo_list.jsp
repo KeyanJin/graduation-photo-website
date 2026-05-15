@@ -27,7 +27,9 @@
   <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <span class="text-muted-campus">共 <%= photos != null ? photos.size() : 0 %> 张照片</span>
-      <a href="<%= ctx %>/photo/upload" class="btn btn-campus-primary">+ 上传照片</a>
+      <a href="<%= ctx %>/photo/upload" class="btn btn-campus-primary">
+        <svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-upload"/></svg> 上传照片
+      </a>
     </div>
 
     <% if (photos != null && !photos.isEmpty()) { %>

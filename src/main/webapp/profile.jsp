@@ -48,7 +48,9 @@
       <div class="col-md-4">
         <div class="card card-campus p-4">
           <div class="d-flex align-items-center gap-3 mb-3">
-            <span class="feature-icon feature-icon-primary" style="width:48px;height:48px;font-size:1.5rem;margin:0;">&#127891;</span>
+            <span class="ai-feature-icon ai-feature-icon-primary" style="width:48px;height:48px;margin:0;">
+              <svg class="ai-icon" aria-hidden="true"><use href="#ai-icon-education"/></svg>
+            </span>
             <div>
               <h5 class="mb-0">教育履历</h5>
               <small class="text-muted-campus">共 <%= eduCount %> 条记录</small>
@@ -60,7 +62,9 @@
       <div class="col-md-4">
         <div class="card card-campus p-4">
           <div class="d-flex align-items-center gap-3 mb-3">
-            <span class="feature-icon feature-icon-secondary" style="width:48px;height:48px;font-size:1.5rem;margin:0;">&#128247;</span>
+            <span class="ai-feature-icon ai-feature-icon-secondary" style="width:48px;height:48px;margin:0;">
+              <svg class="ai-icon" aria-hidden="true"><use href="#ai-icon-camera"/></svg>
+            </span>
             <div>
               <h5 class="mb-0">我的照片</h5>
               <small class="text-muted-campus">共 <%= photoCount %> 张照片</small>
@@ -74,7 +78,9 @@
     <div class="mt-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h5>最近照片</h5>
-        <a href="<%= ctx %>/photo/upload" class="btn btn-campus-accent btn-sm">+ 上传照片</a>
+        <a href="<%= ctx %>/photo/upload" class="btn btn-campus-accent btn-sm">
+          <svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-upload"/></svg> 上传照片
+        </a>
       </div>
       <% if (myPhotos != null && !myPhotos.isEmpty()) { %>
       <div class="photo-grid">

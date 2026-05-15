@@ -27,7 +27,9 @@
   <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <span class="text-muted-campus">共 <%= educationList != null ? educationList.size() : 0 %> 条记录</span>
-      <a href="<%= ctx %>/education?action=add" class="btn btn-campus-primary">+ 添加履历</a>
+      <a href="<%= ctx %>/education?action=add" class="btn btn-campus-primary">
+        <svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-add"/></svg> 添加履历
+      </a>
     </div>
 
     <% if (educationList != null && !educationList.isEmpty()) { %>

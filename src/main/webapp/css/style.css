@@ -1068,6 +1068,91 @@ h1, h2, h3, h4, h5, h6 {
 .bg-accent-campus { background-color: var(--focus-yellow) !important; }
 .bg-campus { background-color: var(--color-bg) !important; }
 
+/* --- SVG Icons --- */
+.ai-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.ai-icon-sm { width: 20px; height: 20px; }
+.ai-icon-md { width: 24px; height: 24px; }
+.ai-icon-lg { width: 32px; height: 32px; }
+.ai-icon-xl { width: 48px; height: 48px; }
+.ai-icon-2xl { width: 64px; height: 64px; }
+
+/* Icon in button */
+.btn .ai-icon {
+  margin-right: 6px;
+  margin-top: -2px;
+}
+
+/* Feature icon container (for index.jsp cards) */
+.ai-feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-md);
+  font-size: var(--font-size-2xl);
+  box-shadow: 0 3px 0 0 var(--shadow-btn);
+}
+
+.ai-feature-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.ai-feature-icon-primary {
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+}
+
+.ai-feature-icon-secondary {
+  background: #e8f5e9;
+  color: var(--color-success);
+}
+
+.ai-feature-icon-accent {
+  background: rgba(255, 204, 0, 0.25);
+  color: var(--focus-yellow-dark);
+}
+
+/* Stage icon container (for search.jsp) */
+.ai-stage-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-sm);
+  box-shadow: 0 3px 0 0 var(--shadow-btn);
+}
+
+.ai-stage-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+/* Hero illustration */
+.ai-hero-illustration {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Brand icon in navbar */
+.ai-brand-icon {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+}
+
 /* --- Scrollbar --- */
 ::-webkit-scrollbar {
   width: 8px;
