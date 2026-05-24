@@ -29,7 +29,7 @@
 
     <% if (photo != null) { %>
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-8 text-center">
         <div class="photo-detail-img">
           <img src="<%= ctx %>/<%= photo.getImagePath() %>" alt="<%= photo.getTitle() %>"
                 onerror="this.src='https://via.placeholder.com/800x600/f8f8f0/794f27?text=%E6%AF%95%E4%B8%9A%E7%85%A7'">
