@@ -29,6 +29,9 @@
           <a class="nav-link" href="<%= navCtx %>/search">搜索</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<%= navCtx %>/timeline.jsp">时光机</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<%= navCtx %>/map">地图</a>
         </li>
       </ul>

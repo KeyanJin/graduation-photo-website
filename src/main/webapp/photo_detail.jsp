@@ -95,7 +95,12 @@
         </div>
         <% } %>
 
-        <a href="<%= ctx %>/photo/list" class="btn btn-campus-outline w-100">返回列表</a>
+        <div class="d-flex gap-2">
+          <a href="<%= ctx %>/compare.jsp?id1=<%= photo.getId() %>" class="btn btn-campus-outline btn-sm">
+            <svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-edit"/></svg> 对比照片
+          </a>
+          <a href="<%= ctx %>/photo/list" class="btn btn-campus-outline w-100">返回列表</a>
+        </div>
       </div>
     </div>
     <% } else { %>
