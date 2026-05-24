@@ -88,7 +88,9 @@
     </div>
     <% } else { %>
     <div class="empty-state">
-      <div class="empty-icon" style="font-size:3rem;color:var(--color-border);">&#128065;</div>
+      <div class="empty-icon">
+        <svg class="ai-icon ai-icon-xl" aria-hidden="true"><use href="#ai-icon-compare"/></svg>
+      </div>
       <h4>选择两张毕业照开始对比</h4>
       <p>比如选一张幼儿园的，再选一张大学的，看看时光如何变迁</p>
     </div>

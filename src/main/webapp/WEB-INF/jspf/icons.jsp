@@ -331,5 +331,57 @@
       <circle cx="300" cy="360" r="2" fill="#ffcc00"/>
     </symbol>
 
+    <!-- 24. 闹钟 (时光机) -->
+    <symbol id="ai-icon-clock" viewBox="0 0 48 48">
+      <!-- 铃铛左 -->
+      <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <!-- 铃铛右 -->
+      <circle cx="36" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <!-- 身体 -->
+      <circle cx="24" cy="26" r="16" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <!-- 内圈 -->
+      <circle cx="24" cy="26" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+      <!-- 12点刻度 -->
+      <line x1="24" y1="16" x2="24" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- 3点刻度 -->
+      <line x1="32" y1="26" x2="34" y2="26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- 6点刻度 -->
+      <line x1="24" y1="34" x2="24" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- 9点刻度 -->
+      <line x1="14" y1="26" x2="16" y2="26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- 时针 -->
+      <line x1="24" y1="26" x2="24" y2="18" stroke="#19c8b9" stroke-width="3" stroke-linecap="round"/>
+      <!-- 分针 -->
+      <line x1="24" y1="26" x2="32" y2="26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- 中心圆点 -->
+      <circle cx="24" cy="26" r="2.5" fill="currentColor"/>
+      <!-- 左脚 -->
+      <line x1="16" y1="40" x2="16" y2="44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <!-- 右脚 -->
+      <line x1="32" y1="40" x2="32" y2="44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- 25. 双图对比 (照片对比) -->
+    <symbol id="ai-icon-compare" viewBox="0 0 48 48">
+      <!-- 左图 -->
+      <rect x="3" y="6" width="19" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <!-- 右图 -->
+      <rect x="26" y="6" width="19" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <!-- 左图山丘 -->
+      <path d="M6 28 L14 18 L20 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+      <!-- 右图圆形 -->
+      <circle cx="36" cy="20" r="5" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+      <!-- 中线 -->
+      <line x1="24" y1="6" x2="24" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+      <!-- 滑块底座 -->
+      <rect x="16" y="38" width="16" height="6" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <!-- 滑块 -->
+      <circle cx="24" cy="41" r="2" fill="currentColor"/>
+      <!-- 左箭头 -->
+      <path d="M18 41 L20 40 L18 39" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- 右箭头 -->
+      <path d="M30 41 L28 40 L30 39" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
   </defs>
 </svg>

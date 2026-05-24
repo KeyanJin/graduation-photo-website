@@ -64,7 +64,7 @@
 
   <section class="timeline-hero">
     <div class="container text-center" style="max-width:900px;">
-      <h1 class="timeline-title animate-fade-in-up">&#9200; 时光机</h1>
+      <h1 class="timeline-title animate-fade-in-up"><svg class="ai-icon" style="width:48px;height:48px;vertical-align:middle;margin-right:8px;" aria-hidden="true"><use href="#ai-icon-clock"/></svg>时光机</h1>
       <p class="timeline-subtitle animate-fade-in-up animate-delay-1">拖动年份，穿梭回那些年的毕业季</p>
 
       <div class="timeline-year-nav animate-fade-in-up animate-delay-2">
