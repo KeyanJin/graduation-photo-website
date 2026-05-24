@@ -1,12 +1,30 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.keyan.graduationphoto.bean.Photo" %>
+<%@ page import="com.keyan.graduationphoto.bean.User" %>
 <%@ page import="com.keyan.graduationphoto.dao.PhotoDao" %>
+<%@ page import="com.keyan.graduationphoto.dao.LikeDao" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Set" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.stream.Collectors" %>
 <%
   String ctx = request.getContextPath();
   PhotoDao photoDao = new PhotoDao();
+  LikeDao likeDao = new LikeDao();
   List<Photo> latestPhotos = photoDao.findAll();
   int displayLimit = 6;
+
+  // 加载点赞数据
+  User indexUser = (User) session.getAttribute("user");
+  if (latestPhotos != null && !latestPhotos.isEmpty()) {
+    List<Integer> ids = latestPhotos.stream().map(Photo::getId).collect(Collectors.toList());
+    Map<Integer, Integer> likeCounts = likeDao.getLikeCounts(ids);
+    Set<Integer> likedIds = indexUser != null ? likeDao.getLikedPhotoIds(indexUser.getId()) : java.util.Collections.emptySet();
+    for (Photo p : latestPhotos) {
+      p.setLikeCount(likeCounts.getOrDefault(p.getId(), 0));
+      p.setLiked(likedIds.contains(p.getId()));
+    }
+  }
 %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -107,13 +125,19 @@
             <div class="photo-card">
               <div class="photo-img-wrapper">
                 <img src="<%= ctx %>/<%= photo.getImagePath() %>" alt="<%= photo.getTitle() %>"
-                     onerror="this.src='https://via.placeholder.com/400x300/7EC8E3/FFFFFF?text=毕业照'">
+                     onerror="this.src='https://via.placeholder.com/400x300/f8f8f0/794f27?text=%E6%AF%95%E4%B8%9A%E7%85%A7'">
               </div>
               <div class="photo-info">
                 <div class="photo-title"><%= photo.getTitle() %></div>
                 <div class="photo-meta">
                   <span class="badge-campus"><%= photo.getStage() != null ? photo.getStage() : "" %></span>
                   <span><%= photo.getSchoolName() != null ? photo.getSchoolName() : "" %></span>
+                  <% if (photo.getLikeCount() > 0) { %>
+                  <span class="ai-like-count">
+                    <svg class="ai-icon" style="width:12px;height:12px;" aria-hidden="true"><use href="#ai-icon-heart"/></svg>
+                    <%= photo.getLikeCount() %>
+                  </span>
+                  <% } %>
                 </div>
               </div>
             </div>

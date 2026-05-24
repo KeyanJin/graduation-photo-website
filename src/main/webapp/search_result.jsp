@@ -76,13 +76,19 @@
         <div class="photo-card">
           <div class="photo-img-wrapper">
             <img src="<%= ctx %>/<%= photo.getImagePath() %>" alt="<%= photo.getTitle() %>"
-                 onerror="this.src='https://via.placeholder.com/400x300/7EC8E3/FFFFFF?text=毕业照'">
+                 onerror="this.src='https://via.placeholder.com/400x300/f8f8f0/794f27?text=%E6%AF%95%E4%B8%9A%E7%85%A7'">
           </div>
           <div class="photo-info">
             <div class="photo-title"><%= photo.getTitle() %></div>
             <div class="photo-meta">
               <span class="badge-campus"><%= photo.getStage() != null ? photo.getStage() : "" %></span>
               <span><%= photo.getSchoolName() != null ? photo.getSchoolName() : "" %></span>
+              <% if (photo.getLikeCount() > 0) { %>
+              <span class="ai-like-count">
+                <svg class="ai-icon" style="width:12px;height:12px;" aria-hidden="true"><use href="#ai-icon-heart"/></svg>
+                <%= photo.getLikeCount() %>
+              </span>
+              <% } %>
             </div>
           </div>
         </div>
@@ -91,7 +97,9 @@
     </div>
     <% } else { %>
     <div class="empty-state">
-      <div class="empty-icon">&#128247;</div>
+      <div class="empty-icon">
+        <svg class="ai-icon ai-icon-xl" aria-hidden="true"><use href="#ai-icon-search"/></svg>
+      </div>
       <h4>暂无搜索结果</h4>
       <p>尝试调整搜索条件，或<a href="<%= ctx %>/search">选择其他教育阶段</a></p>
     </div>

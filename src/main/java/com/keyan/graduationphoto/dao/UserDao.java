@@ -73,11 +73,27 @@ public class UserDao {
         return false;
     }
 
+    public boolean updateAvatar(Integer userId, String avatarPath) {
+        String sql = "UPDATE users SET avatar_path = ? WHERE id = ?";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, avatarPath);
+            ps.setInt(2, userId);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private User mapResultSet(ResultSet rs) throws SQLException {
         User user = new User();
         user.setId(rs.getInt("id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password"));
+        try {
+            user.setAvatarPath(rs.getString("avatar_path"));
+        } catch (SQLException ignored) {}
         return user;
     }
 }

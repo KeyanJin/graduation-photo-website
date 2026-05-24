@@ -39,7 +39,7 @@
           <a href="<%= ctx %>/photo/detail?id=<%= photo.getId() %>" style="text-decoration:none;color:inherit;display:block;">
             <div class="photo-img-wrapper">
               <img src="<%= ctx %>/<%= photo.getImagePath() %>" alt="<%= photo.getTitle() %>"
-                   onerror="this.src='https://via.placeholder.com/400x300/7EC8E3/FFFFFF?text=毕业照'">
+                    onerror="this.src='https://via.placeholder.com/400x300/f8f8f0/794f27?text=%E6%AF%95%E4%B8%9A%E7%85%A7'">
             </div>
           </a>
           <form action="<%= ctx %>/photo/delete" method="post" class="photo-delete-form"
@@ -47,19 +47,27 @@
             <input type="hidden" name="id" value="<%= photo.getId() %>">
             <button type="submit" class="btn-delete" title="删除">×</button>
           </form>
-          <div class="photo-info">
-            <div class="photo-title"><%= photo.getTitle() %></div>
-            <div class="photo-meta">
-              <span class="badge-campus"><%= photo.getStage() != null ? photo.getStage() : "" %></span>
-              <span><%= photo.getSchoolName() != null ? photo.getSchoolName() : "" %></span>
+            <div class="photo-info">
+              <div class="photo-title"><%= photo.getTitle() %></div>
+              <div class="photo-meta">
+                <span class="badge-campus"><%= photo.getStage() != null ? photo.getStage() : "" %></span>
+                <span><%= photo.getSchoolName() != null ? photo.getSchoolName() : "" %></span>
+                <% if (photo.getLikeCount() > 0) { %>
+                <span class="ai-like-count">
+                  <svg class="ai-icon" style="width:12px;height:12px;" aria-hidden="true"><use href="#ai-icon-heart"/></svg>
+                  <%= photo.getLikeCount() %>
+                </span>
+                <% } %>
+              </div>
             </div>
-          </div>
         </div>
       <% } %>
     </div>
     <% } else { %>
     <div class="empty-state">
-      <div class="empty-icon">&#128247;</div>
+      <div class="empty-icon">
+        <svg class="ai-icon ai-icon-xl" aria-hidden="true"><use href="#ai-icon-camera"/></svg>
+      </div>
       <h4>还没有上传毕业照</h4>
       <p>点击上方按钮上传你的第一张毕业照吧！</p>
       <a href="<%= ctx %>/photo/upload" class="btn btn-campus-primary">上传照片</a>

@@ -2,6 +2,7 @@ package com.keyan.graduationphoto.servlet;
 
 import com.keyan.graduationphoto.bean.Photo;
 import com.keyan.graduationphoto.bean.User;
+import com.keyan.graduationphoto.dao.LikeDao;
 import com.keyan.graduationphoto.dao.PhotoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,12 +11,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @WebServlet("/photo/list")
 public class PhotoListServlet extends HttpServlet {
 
     private final PhotoDao photoDao = new PhotoDao();
+    private final LikeDao likeDao = new LikeDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -30,8 +33,19 @@ public class PhotoListServlet extends HttpServlet {
         }
 
         List<Photo> photos = photoDao.findByUserId(user.getId());
-        req.setAttribute("photos", photos);
 
+        // 批量加载点赞数据
+        if (!photos.isEmpty()) {
+            List<Integer> ids = photos.stream().map(Photo::getId).collect(Collectors.toList());
+            Map<Integer, Integer> counts = likeDao.getLikeCounts(ids);
+            Set<Integer> likedIds = likeDao.getLikedPhotoIds(user.getId());
+            for (Photo p : photos) {
+                p.setLikeCount(counts.getOrDefault(p.getId(), 0));
+                p.setLiked(likedIds.contains(p.getId()));
+            }
+        }
+
+        req.setAttribute("photos", photos);
         req.getRequestDispatcher("/photo_list.jsp").forward(req, resp);
     }
 }

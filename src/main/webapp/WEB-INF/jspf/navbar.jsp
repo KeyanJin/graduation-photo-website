@@ -35,7 +35,11 @@
       <% if (isLoggedIn) { %>
       <div class="dropdown">
         <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor:pointer;">
+          <% if (loginUser.getAvatarPath() != null && !loginUser.getAvatarPath().isEmpty()) { %>
+          <img src="<%= navCtx %>/uploads/<%= loginUser.getAvatarPath() %>" class="ai-avatar-nav" alt="avatar">
+          <% } else { %>
           <span class="user-avatar"><%= loginUser.getUsername().substring(0, 1).toUpperCase() %></span>
+          <% } %>
           <span><%= loginUser.getUsername() %></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">

@@ -21,8 +21,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%= ctx %>/css/style.css" rel="stylesheet">
   <style>
-    #mapContainer { width: 100%; height: 400px; border-radius: 20px; overflow: hidden; border: 2px solid #c4b89e; }
-    .map-info { background: rgb(247, 243, 223); padding: 8px 12px; border-radius: 12px; margin-top: 8px; font-size: 0.875rem; color: #725d42; border: 1px solid #c4b89e; }
+    #mapContainer { width: 100%; height: 400px; border-radius: 20px; overflow: hidden; border: 2px solid #b8b3a8; }
+    .map-info { background: rgb(245, 243, 235); padding: 8px 12px; border-radius: 12px; margin-top: 8px; font-size: 0.875rem; color: #5a5040; border: 1px solid #b8b3a8; }
   </style>
 </head>
 <body>

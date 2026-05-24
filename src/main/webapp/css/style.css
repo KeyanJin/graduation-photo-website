@@ -983,19 +983,36 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-/* --- Photo Detail --- */
+/* --- Photo Detail (Large Polaroid Frame) --- */
 .photo-detail-img {
-  border-radius: var(--radius-lg);
+  background: #fff;
+  border-radius: 4px;
+  padding: 16px 16px 20px;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.06),
+    0 3px 0 0 var(--shadow-btn),
+    0 8px 24px rgba(114, 93, 66, 0.15);
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(107, 92, 67, 0.42);
-  border: 2px solid var(--color-border);
+  transition: var(--transition-base);
+}
+
+.photo-detail-img:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.06),
+    0 4px 0 0 var(--shadow-btn),
+    0 12px 32px rgba(114, 93, 66, 0.18);
 }
 
 .photo-detail-img img {
   width: 100%;
-  max-height: 500px;
+  height: auto;
+  max-height: 70vh;
   object-fit: contain;
+  display: block;
   background: var(--color-bg-alt);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
 }
 
 /* --- Animations --- */
@@ -1192,4 +1209,141 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-border-hover);
+}
+
+/* --- Like Button --- */
+.ai-like-btn {
+  transition: var(--transition-fast);
+}
+
+.ai-like-btn.liked {
+  background: var(--color-danger-light);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.ai-like-btn.liked:hover {
+  background: var(--color-danger-light);
+  border-color: var(--color-danger);
+}
+
+.ai-like-btn.liked .ai-icon {
+  color: var(--color-danger);
+}
+
+.ai-like-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+/* --- Avatar Upload --- */
+.ai-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 3px 0 0 var(--shadow-btn);
+}
+
+.ai-avatar-nav {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 2px solid var(--color-bg);
+}
+
+/* --- Lightbox --- */
+.ai-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  animation: lightboxFadeIn 0.2s ease;
+}
+
+.ai-lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ai-lightbox .ai-lightbox-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+  background: var(--color-bg-alt);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.ai-lightbox .ai-lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  z-index: 1;
+}
+
+.ai-lightbox .ai-lightbox-close:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: #fff;
+}
+
+.ai-lightbox .ai-lightbox-prev,
+.ai-lightbox .ai-lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.ai-lightbox .ai-lightbox-prev { left: 16px; }
+.ai-lightbox .ai-lightbox-next { right: 16px; }
+
+.ai-lightbox .ai-lightbox-prev:hover,
+.ai-lightbox .ai-lightbox-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: #fff;
+}
+
+.ai-lightbox .ai-lightbox-counter {
+  position: absolute;
+  bottom: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
 }

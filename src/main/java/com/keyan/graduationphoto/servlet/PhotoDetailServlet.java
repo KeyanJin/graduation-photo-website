@@ -2,6 +2,7 @@ package com.keyan.graduationphoto.servlet;
 
 import com.keyan.graduationphoto.bean.Photo;
 import com.keyan.graduationphoto.bean.User;
+import com.keyan.graduationphoto.dao.LikeDao;
 import com.keyan.graduationphoto.dao.PhotoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,11 +11,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Collections;
 
 @WebServlet("/photo/detail")
 public class PhotoDetailServlet extends HttpServlet {
 
     private final PhotoDao photoDao = new PhotoDao();
+    private final LikeDao likeDao = new LikeDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -47,6 +50,10 @@ public class PhotoDetailServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/photo/list");
             return;
         }
+
+        // 加载点赞数据
+        photo.setLikeCount(likeDao.getLikeCount(photoId));
+        photo.setLiked(likeDao.getLikedPhotoIds(user.getId()).contains(photoId));
 
         req.setAttribute("photo", photo);
         req.getRequestDispatcher("/photo_detail.jsp").forward(req, resp);

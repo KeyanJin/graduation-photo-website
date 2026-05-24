@@ -1,6 +1,8 @@
 package com.keyan.graduationphoto.servlet;
 
 import com.keyan.graduationphoto.bean.Photo;
+import com.keyan.graduationphoto.bean.User;
+import com.keyan.graduationphoto.dao.LikeDao;
 import com.keyan.graduationphoto.dao.PhotoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,12 +11,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @WebServlet("/search/*")
 public class SearchServlet extends HttpServlet {
 
     private final PhotoDao photoDao = new PhotoDao();
+    private final LikeDao likeDao = new LikeDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -25,16 +29,26 @@ public class SearchServlet extends HttpServlet {
         String pathInfo = req.getPathInfo();
 
         if (pathInfo == null || "/".equals(pathInfo)) {
-            // /search -> 展示教育阶段选择页面
             req.getRequestDispatcher("/search.jsp").forward(req, resp);
         } else if ("/result".equals(pathInfo)) {
-            // /search/result -> 执行搜索并展示结果
             String stage = req.getParameter("stage");
             String schoolName = req.getParameter("schoolName");
             String entranceYear = req.getParameter("entranceYear");
             String className = req.getParameter("className");
 
             List<Photo> photos = photoDao.searchPhotos(stage, schoolName, entranceYear, className);
+
+            // 批量加载点赞数据
+            if (!photos.isEmpty()) {
+                List<Integer> ids = photos.stream().map(Photo::getId).collect(Collectors.toList());
+                Map<Integer, Integer> counts = likeDao.getLikeCounts(ids);
+                User user = (User) req.getSession().getAttribute("user");
+                Set<Integer> likedIds = user != null ? likeDao.getLikedPhotoIds(user.getId()) : Collections.emptySet();
+                for (Photo p : photos) {
+                    p.setLikeCount(counts.getOrDefault(p.getId(), 0));
+                    p.setLiked(likedIds.contains(p.getId()));
+                }
+            }
 
             req.setAttribute("photos", photos);
             req.setAttribute("stage", stage);

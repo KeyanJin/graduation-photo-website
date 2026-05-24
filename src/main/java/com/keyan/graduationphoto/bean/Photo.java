@@ -17,6 +17,10 @@ public class Photo implements Serializable {
     private Double latitude;        // 地图纬度
     private String uploadTime;      // 上传时间
 
+    // 点赞
+    private int likeCount;
+    private boolean isLiked;
+
     // 关联信息（用于展示）
     private String username;
     private String stage;
@@ -145,5 +149,21 @@ public class Photo implements Serializable {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
     }
 }

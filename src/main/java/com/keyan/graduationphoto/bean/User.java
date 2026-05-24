@@ -9,6 +9,7 @@ public class User implements Serializable {
     private Integer id;
     private String username;
     private String password;
+    private String avatarPath;
 
     public User() {
     }
@@ -41,5 +42,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
     }
 }

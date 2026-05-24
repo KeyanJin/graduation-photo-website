@@ -65,7 +65,9 @@
     </div>
     <% } else { %>
     <div class="empty-state">
-      <div class="empty-icon">&#127891;</div>
+      <div class="empty-icon">
+        <svg class="ai-icon ai-icon-xl" aria-hidden="true"><use href="#ai-icon-education"/></svg>
+      </div>
       <h4>还没有教育履历</h4>
       <p>添加你的求学经历，关联你的毕业照</p>
       <a href="<%= ctx %>/education?action=add" class="btn btn-campus-primary">添加教育履历</a>

@@ -13,7 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%= ctx %>/css/style.css" rel="stylesheet">
   <style>
-    #mapContainer { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; border: 2px solid #c4b89e; }
+    #mapContainer { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; border: 2px solid #b8b3a8; }
   </style>
 </head>
 <body>
@@ -32,7 +32,7 @@
       <div class="col-lg-8">
         <div class="photo-detail-img">
           <img src="<%= ctx %>/<%= photo.getImagePath() %>" alt="<%= photo.getTitle() %>"
-               onerror="this.src='https://via.placeholder.com/800x600/7EC8E3/FFFFFF?text=毕业照'">
+                onerror="this.src='https://via.placeholder.com/800x600/f8f8f0/794f27?text=%E6%AF%95%E4%B8%9A%E7%85%A7'">
         </div>
       </div>
 
@@ -71,6 +71,19 @@
               <span class="fw-bold me-2">上传时间</span>
               <span class="text-muted-campus"><%= photo.getUploadTime() != null ? photo.getUploadTime() : "" %></span>
             </div>
+
+            <hr>
+
+            <div class="d-flex gap-2 mb-3">
+              <button class="ai-like-btn btn btn-campus-outline btn-sm <%= photo.isLiked() ? "liked" : "" %>"
+                      data-photo-id="<%= photo.getId() %>" data-ctx="<%= ctx %>" id="likeBtn">
+                <svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-heart"/></svg>
+                <span id="likeCount"><%= photo.getLikeCount() > 0 ? photo.getLikeCount() : "点赞" %></span>
+              </button>
+              <a href="<%= ctx %>/<%= photo.getImagePath() %>" download class="btn btn-campus-outline btn-sm">
+                <svg class="ai-icon ai-icon-sm" aria-hidden="true"><use href="#ai-icon-upload"/></svg> 下载原图
+              </a>
+            </div>
           </div>
         </div>
 
@@ -87,7 +100,9 @@
     </div>
     <% } else { %>
     <div class="empty-state">
-      <div class="empty-icon">&#128247;</div>
+      <div class="empty-icon">
+        <svg class="ai-icon ai-icon-xl" aria-hidden="true"><use href="#ai-icon-camera"/></svg>
+      </div>
       <h4>照片不存在</h4>
       <p>该照片可能已被删除</p>
       <a href="<%= ctx %>/photo/list" class="btn btn-campus-primary">返回列表</a>
