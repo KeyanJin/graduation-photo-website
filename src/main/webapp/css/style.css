@@ -13,28 +13,28 @@
   --color-primary-active: #11a89b;
   --color-primary-bg:     #e6f9f6;
 
-  /* 文字（偏冷灰棕色系） */
-  --color-text:           #5c4a32;
-  --color-text-light:     #5a5040;
-  --color-text-muted:     #908b80;
-  --color-text-secondary: #7d7568;
-  --color-text-disabled:  #b8b3a8;
+  /* 文字（温暖棕色系） */
+  --color-text:           #794f27;
+  --color-text-light:     #725d42;
+  --color-text-muted:     #9f927d;
+  --color-text-secondary: #8a7b66;
+  --color-text-disabled:  #c4b89e;
 
-  /* 背景（偏冷米白） */
-  --color-bg:             #f5f5f2;
-  --color-bg-alt:         rgb(245, 243, 235);
-  --color-bg-secondary:   #ebe8e0;
-  --color-bg-disabled:    #eae8e2;
+  /* 背景（奶油米白） */
+  --color-bg:             #f8f8f0;
+  --color-bg-alt:         rgb(247, 243, 223);
+  --color-bg-secondary:   #f0e8d8;
+  --color-bg-disabled:    #f0ece2;
   --color-card:           #ffffff;
 
   /* 边框 */
-  --color-border:         #b8b3a8;
-  --color-border-light:   #e2e0d8;
-  --color-border-hover:   #9a9488;
+  --color-border:         #c4b89e;
+  --color-border-light:   #e8e2d6;
+  --color-border-hover:   #a89878;
 
   /* 3D 阴影色 */
-  --shadow-btn:           #b0aba0;
-  --shadow-input:         #ccc8bc;
+  --shadow-btn:           #bdaea0;
+  --shadow-input:         #d4c9b4;
 
   /* 状态色 */
   --color-danger:         #e05a5a;
@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Navbar --- */
 .navbar-campus {
-  background: rgba(245, 245, 242, 0.95) !important;
+  background: rgba(248, 248, 240, 0.95) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--color-border-light);
@@ -579,7 +579,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   letter-spacing: 0.01em;
   transition: var(--transition-fast);
-  background: rgb(245, 243, 235);
+  background: rgb(247, 243, 223);
   color: var(--color-text-light);
   box-shadow: 0 3px 0 0 var(--shadow-input);
 }

@@ -14,9 +14,9 @@
     #map-container { width: 100%; height: calc(100vh - 56px); }
     .photo-info-window { padding: 8px; max-width: 320px; }
     .photo-info-window .photo-thumb { width: 100%; max-height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
-    .photo-info-window .photo-title { font-size: 15px; font-weight: 600; color: #5a5040; margin-bottom: 6px; }
-    .photo-info-window .photo-meta { font-size: 12px; color: #7d7568; line-height: 1.8; }
-    .photo-info-window .photo-meta span { display: inline-block; background: rgb(245, 243, 235); padding: 1px 8px; border-radius: 8px; margin: 2px 2px 2px 0; }
+    .photo-info-window .photo-title { font-size: 15px; font-weight: 600; color: #725d42; margin-bottom: 6px; }
+    .photo-info-window .photo-meta { font-size: 12px; color: #8a7b66; line-height: 1.8; }
+    .photo-info-window .photo-meta span { display: inline-block; background: rgb(247, 243, 223); padding: 1px 8px; border-radius: 8px; margin: 2px 2px 2px 0; }
     .photo-info-window .photo-link { display: inline-block; margin-top: 8px; color: #19c8b9; font-size: 13px; text-decoration: none; font-weight: 600; }
     .photo-info-window .photo-link:hover { text-decoration: underline; }
     .loading-overlay {
