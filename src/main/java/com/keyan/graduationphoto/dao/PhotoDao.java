@@ -160,6 +160,74 @@ public class PhotoDao {
         return list;
     }
 
+    public int countSearchResults(String stage, String schoolName, String entranceYear, String className) {
+        StringBuilder sql = new StringBuilder(
+            "SELECT COUNT(*) FROM photos p JOIN educations e ON p.education_id = e.id WHERE 1=1"
+        );
+        List<Object> params = new ArrayList<>();
+        buildWhereClause(sql, params, stage, schoolName, entranceYear, className);
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
+            }
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public List<Photo> searchPhotosPaginated(String stage, String schoolName,
+            String entranceYear, String className, int page, int pageSize) {
+        List<Photo> list = new ArrayList<>();
+        StringBuilder sql = new StringBuilder(
+            "SELECT p.*, u.username, e.stage, e.school_name, e.entrance_year, e.class_name " +
+            "FROM photos p JOIN users u ON p.user_id = u.id JOIN educations e ON p.education_id = e.id WHERE 1=1"
+        );
+        List<Object> params = new ArrayList<>();
+        buildWhereClause(sql, params, stage, schoolName, entranceYear, className);
+        sql.append(" ORDER BY p.upload_time DESC LIMIT ? OFFSET ?");
+        params.add(pageSize);
+        params.add((page - 1) * pageSize);
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
+            }
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(mapResultSet(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    private void buildWhereClause(StringBuilder sql, List<Object> params,
+            String stage, String schoolName, String entranceYear, String className) {
+        if (stage != null && !stage.isEmpty()) {
+            sql.append(" AND e.stage = ?");
+            params.add(stage);
+        }
+        if (schoolName != null && !schoolName.isEmpty()) {
+            sql.append(" AND e.school_name LIKE ?");
+            params.add("%" + schoolName + "%");
+        }
+        if (entranceYear != null && !entranceYear.isEmpty()) {
+            sql.append(" AND e.entrance_year LIKE ?");
+            params.add("%" + entranceYear + "%");
+        }
+        if (className != null && !className.isEmpty()) {
+            sql.append(" AND e.class_name LIKE ?");
+            params.add("%" + className + "%");
+        }
+    }
+
     private Photo mapResultSet(ResultSet rs) throws SQLException {
         Photo photo = new Photo();
         photo.setId(rs.getInt("id"));

@@ -8,6 +8,19 @@
   String schoolName = (String) request.getAttribute("schoolName");
   String entranceYear = (String) request.getAttribute("entranceYear");
   String className = (String) request.getAttribute("className");
+  Integer total = (Integer) request.getAttribute("total");
+  Integer currentPage = (Integer) request.getAttribute("currentPage");
+  Integer totalPages = (Integer) request.getAttribute("totalPages");
+  if (total == null) total = photos != null ? photos.size() : 0;
+  if (currentPage == null) currentPage = 1;
+  if (totalPages == null) totalPages = 1;
+
+  // 构建分页 URL
+  String pageBaseUrl = ctx + "/search/result?";
+  if (stage != null && !stage.isEmpty()) pageBaseUrl += "stage=" + java.net.URLEncoder.encode(stage, "UTF-8") + "&";
+  if (schoolName != null && !schoolName.isEmpty()) pageBaseUrl += "schoolName=" + java.net.URLEncoder.encode(schoolName, "UTF-8") + "&";
+  if (entranceYear != null && !entranceYear.isEmpty()) pageBaseUrl += "entranceYear=" + java.net.URLEncoder.encode(entranceYear, "UTF-8") + "&";
+  if (className != null && !className.isEmpty()) pageBaseUrl += "className=" + java.net.URLEncoder.encode(className, "UTF-8") + "&";
 %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -65,11 +78,12 @@
         <div class="col-md-2">
           <button type="submit" class="btn btn-campus-primary w-100">搜索</button>
         </div>
+        <input type="hidden" name="page" value="1">
       </form>
     </div>
 
     <% if (photos != null && !photos.isEmpty()) { %>
-    <p class="text-muted-campus mb-3">共找到 <strong><%= photos.size() %></strong> 张毕业照</p>
+    <p class="text-muted-campus mb-3">共找到 <strong><%= total %></strong> 张毕业照 · 第 <strong><%= currentPage %></strong>/<%= totalPages %> 页</p>
     <div class="photo-grid">
       <% for (Photo photo : photos) { %>
       <a href="<%= ctx %>/photo/detail?id=<%= photo.getId() %>" style="text-decoration:none;color:inherit;">
@@ -95,6 +109,33 @@
       </a>
       <% } %>
     </div>
+
+    <%-- 分页控件 --%>
+    <% if (totalPages > 1) { %>
+    <div class="ai-pagination">
+      <% if (currentPage > 1) { %>
+      <a href="<%= pageBaseUrl %>page=<%= currentPage - 1 %>" class="ai-page-btn">&lsaquo; 上一页</a>
+      <% } else { %>
+      <span class="ai-page-btn disabled">&lsaquo; 上一页</span>
+      <% } %>
+
+      <% for (int i = 1; i <= totalPages; i++) {
+        if (i == currentPage) { %>
+      <span class="ai-page-btn active"><%= i %></span>
+      <% } else if (i <= 3 || i > totalPages - 3 || Math.abs(i - currentPage) <= 1) { %>
+      <a href="<%= pageBaseUrl %>page=<%= i %>" class="ai-page-btn"><%= i %></a>
+      <% } else if (i == 4 || i == totalPages - 3) { %>
+      <span class="ai-page-ellipsis">...</span>
+      <% } %>
+      <% } %>
+
+      <% if (currentPage < totalPages) { %>
+      <a href="<%= pageBaseUrl %>page=<%= currentPage + 1 %>" class="ai-page-btn">下一页 &rsaquo;</a>
+      <% } else { %>
+      <span class="ai-page-btn disabled">下一页 &rsaquo;</span>
+      <% } %>
+    </div>
+    <% } %>
     <% } else { %>
     <div class="empty-state">
       <div class="empty-icon">

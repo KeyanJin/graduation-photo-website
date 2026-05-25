@@ -36,7 +36,20 @@ public class SearchServlet extends HttpServlet {
             String entranceYear = req.getParameter("entranceYear");
             String className = req.getParameter("className");
 
-            List<Photo> photos = photoDao.searchPhotos(stage, schoolName, entranceYear, className);
+            // 分页参数
+            int page = 1;
+            int pageSize = 12;
+            try {
+                String pageStr = req.getParameter("page");
+                if (pageStr != null && !pageStr.isEmpty()) page = Integer.parseInt(pageStr);
+            } catch (NumberFormatException ignored) {}
+
+            int total = photoDao.countSearchResults(stage, schoolName, entranceYear, className);
+            int totalPages = (int) Math.ceil((double) total / pageSize);
+            if (page < 1) page = 1;
+            if (page > totalPages && totalPages > 0) page = totalPages;
+
+            List<Photo> photos = photoDao.searchPhotosPaginated(stage, schoolName, entranceYear, className, page, pageSize);
 
             // 批量加载点赞数据
             if (!photos.isEmpty()) {
@@ -55,6 +68,9 @@ public class SearchServlet extends HttpServlet {
             req.setAttribute("schoolName", schoolName);
             req.setAttribute("entranceYear", entranceYear);
             req.setAttribute("className", className);
+            req.setAttribute("total", total);
+            req.setAttribute("currentPage", page);
+            req.setAttribute("totalPages", totalPages);
             req.getRequestDispatcher("/search_result.jsp").forward(req, resp);
         } else {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
