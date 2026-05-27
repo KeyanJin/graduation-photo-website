@@ -1,14 +1,11 @@
+### Maven ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.kotlin
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -38,7 +35,33 @@ build/
 ### Mac OS ###
 .DS_Store
 
+### Kotlin ###
+.kotlin
+
+### Log files ###
+*.log
+logs/
+
+### Package files ###
+*.jar
+*.war
+*.nar
+*.ear
+*.tar.gz
+*.rar
+*.zip
+
+### Virtual machine crash logs ###
+hs_err_pid*
+
+### Spring Boot ###
+spring-shell.log
+
 ### Project Specific ###
 # 用户上传的照片文件
 src/main/webapp/uploads/*
 !src/main/webapp/uploads/.gitkeep
+
+# 应用配置（含数据库密码等敏感信息）
+# application-local.yml
+# application-prod.yml
