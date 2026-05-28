@@ -5,34 +5,65 @@
 <%@ page import="com.keyan.graduationphoto.dao.LikeDao" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.util.stream.Collectors" %>
+<%!
+  // 根据教育阶段获取学制年限
+  private int getStageDuration(String stage) {
+    if (stage == null) return -1;
+    switch (stage) {
+      case "幼儿园": return 3;
+      case "小学":   return 6;
+      case "初中":   return 3;
+      case "高中":   return 3;
+      case "大学":   return 4;
+      case "硕士研究生": return 3;
+      case "博士研究生": return 4;
+      default: return -1; // "其他"等无法推算
+    }
+  }
+
+  // 根据入学年份和教育阶段计算毕业年份
+  private String calcGraduationYear(String entranceYear, String stage) {
+    if (entranceYear == null || entranceYear.isEmpty()) return null;
+    int duration = getStageDuration(stage);
+    if (duration < 0) return null;
+    try {
+      int year = Integer.parseInt(entranceYear.trim());
+      return String.valueOf(year + duration);
+    } catch (NumberFormatException e) {
+      return null;
+    }
+  }
+%>
 <%
   String ctx = request.getContextPath();
   PhotoDao photoDao = new PhotoDao();
   LikeDao likeDao = new LikeDao();
   User timelineUser = (User) session.getAttribute("user");
 
-  // 获取所有照片并按入学年份分组
+  // 获取所有照片并按毕业年份分组
   List<Photo> allPhotos = photoDao.findAll();
   Map<String, List<Photo>> photosByYear = new LinkedHashMap<>();
 
-  // 提取所有年份
+  // 计算每张照片的毕业年份并收集
   Set<String> years = new TreeSet<>(Collections.reverseOrder());
+  Map<Integer, String> photoGradYear = new HashMap<>();
   for (Photo p : allPhotos) {
-    if (p.getEntranceYear() != null && !p.getEntranceYear().isEmpty()) {
-      years.add(p.getEntranceYear());
+    String gradYear = calcGraduationYear(p.getEntranceYear(), p.getStage());
+    if (gradYear != null) {
+      photoGradYear.put(p.getId(), gradYear);
+      years.add(gradYear);
     }
   }
 
-  // 按年份分组（只取前6张每年）
+  // 按毕业年份分组（每组最多12张）
   for (String year : years) {
     List<Photo> yearPhotos = new ArrayList<>();
     for (Photo p : allPhotos) {
-      if (year.equals(p.getEntranceYear()) && yearPhotos.size() < 12) {
+      if (year.equals(photoGradYear.get(p.getId())) && yearPhotos.size() < 12) {
         yearPhotos.add(p);
       }
     }
     if (!yearPhotos.isEmpty()) {
-      // 加载点赞数据
       List<Integer> ids = yearPhotos.stream().map(Photo::getId).collect(Collectors.toList());
       Map<Integer, Integer> counts = likeDao.getLikeCounts(ids);
       for (Photo p : yearPhotos) {
@@ -70,13 +101,13 @@
       <div class="timeline-year-nav animate-fade-in-up animate-delay-2">
         <% for (String year : years) { %>
         <a href="?year=<%= year %>" class="timeline-year-btn <%= year.equals(selectedYear) ? "active" : "" %>">
-          <%= year %>年
+          <%= year %>届
         </a>
         <% } %>
       </div>
 
       <% if (selectedYear != null) { %>
-      <div class="timeline-year-label animate-fade-in-up"><%= selectedYear %> 级 · 共 <%= displayPhotos.size() %> 张回忆</div>
+      <div class="timeline-year-label animate-fade-in-up"><%= selectedYear %> 届 · 共 <%= displayPhotos.size() %> 张回忆</div>
       <% } %>
     </div>
   </section>
